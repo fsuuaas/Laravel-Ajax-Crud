@@ -128,5 +128,27 @@ $(document).ready(function(){
             }
         });
     });
+    
+    // open delete user modal
+    $(document).on('click', '#deleteUserModal', function () {
+        $('#deleteModal').modal('show');
+        $('input[name=del_id]').val($(this).data('id'));
+    });
+
+    // delete user
+    $('.modal-footer').on('click', '#delete', function () {
+        $.ajax({
+            type: 'delete',
+            url: '/',
+            headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') },
+            data: {
+                id: $('input[name=del_id]').val()
+            },
+            success: function (data) {
+                $('#deleteModal').modal('hide');
+                $('.user-' + $('input[name=del_id]').val()).remove();
+            }
+        });
+    });
 });
 
