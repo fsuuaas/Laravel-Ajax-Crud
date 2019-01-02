@@ -42,5 +42,10 @@ class UsersController extends Controller {
         $user->update($request->all());
         return response()->json($user);
     }
-    
+
+    // remove user from the database
+    public function destroy(Request $request){
+        User::findOrFail($request->id)->delete();
+        return response()->json();
+    }    
 }
