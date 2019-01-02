@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Validator;
 use Response;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller {
 
@@ -33,6 +34,13 @@ class UsersController extends Controller {
             $user->save();
             return response()->json($user);
         }
+    }
+
+    // update user according to the id
+    public function update(Request $request){
+        $user=User::findOrFail($request->id);
+        $user->update($request->all());
+        return response()->json($user);
     }
     
 }
