@@ -64,5 +64,14 @@ $(document).ready(function(){
         $('select[name=view_designation]').val($(this).data('designation'));
         $('#viewModal').modal('show');
     });
+
+    // view user data for editting
+    $(document).on('click', '#editUserModal', function () {
+        $('input[name=edit_username]').val($(this).data('username'));
+        $('input[name=edit_email]').val($(this).data('email'));
+        $('select[name=edit_designation]').val($(this).data('designation'));
+        $('input[name=edit_id]').val($(this).data('id'));
+        $('#editModal').modal('show');
+    });
 });
 
