@@ -83,7 +83,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success btn-raised">Save</button>
+                    <button type="submit" class="btn btn-success btn-raised" id="create">Save</button>
                 </div>
             </div>
         </div>
