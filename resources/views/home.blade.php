@@ -23,45 +23,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                            <button type="button" class="btn btn-primary btn-raised" data-toggle="modal" data-target="#viewModal">View</button>
-                                            <button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal">Edit</button>
-                                            <button class="btn btn-raised btn-danger">Remove</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                            <button type="button" class="btn btn-primary btn-raised" data-toggle="modal" data-target="#viewModal">View</button>
-                                            <button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal">Edit</button>
-                                            <button class="btn btn-raised btn-danger">Remove</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                            <button type="button" class="btn btn-primary btn-raised" data-toggle="modal" data-target="#viewModal">View</button>
-                                            <button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal">Edit</button>
-                                            <button class="btn btn-raised btn-danger">Remove</button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach($users as $user)
+                                    <tr class="user-{{ $user->id }}">
+                                        <th scope="row">{{ $user->id }}</th>
+                                        <td>{{ $user->username }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->designation }}</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm" role="group" aria-label="">
+                                                <button type="button" class="btn btn-primary btn-raised" data-toggle="modal" data-target="#viewModal" data-id="{{ $user->id }}"
+                                                        data-username="{{ $user->username }}" data-email="{{ $user->email }}" data-designation="{{ $user->designation }}">View</button>
+                                                <button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal" data-id="{{ $user->id }}"
+                                                        data-username="{{ $user->username }}" data-email="{{ $user->email }}" data-designation="{{ $user->designation }}">Edit</button>
+                                                <button class="btn btn-raised btn-danger" data-id="{{ $user->id }}">Remove</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
