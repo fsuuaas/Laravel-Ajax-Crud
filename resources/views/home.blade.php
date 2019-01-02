@@ -12,7 +12,7 @@
                         <button class="btn btn-raised btn-success float-right" data-toggle="modal" data-target="#exampleModal">Create</button>
                     </div>                    
                     <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="userData">
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-uppercase">Id</th>
@@ -25,18 +25,16 @@
                             <tbody>
                                 @foreach($users as $user)
                                     <tr class="user-{{ $user->id }}">
-                                        <th scope="row">{{ $user->id }}</th>
+                                        <td>{{ $user->id }}</td>
                                         <td>{{ $user->username }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->designation }}</td>
                                         <td>
-                                            <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                                <button type="button" class="btn btn-primary btn-raised" data-toggle="modal" data-target="#viewModal" data-id="{{ $user->id }}"
-                                                        data-username="{{ $user->username }}" data-email="{{ $user->email }}" data-designation="{{ $user->designation }}">View</button>
-                                                <button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal" data-id="{{ $user->id }}"
-                                                        data-username="{{ $user->username }}" data-email="{{ $user->email }}" data-designation="{{ $user->designation }}">Edit</button>
-                                                <button class="btn btn-raised btn-danger" data-id="{{ $user->id }}">Remove</button>
-                                            </div>
+                                            <button type="button" class="btn btn-primary btn-raised" data-toggle="modal" data-target="#viewModal" data-id="{{ $user->id }}"
+                                                    data-username="{{ $user->username }}" data-email="{{ $user->email }}" data-designation="{{ $user->designation }}">View</button>
+                                            <button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal" data-id="{{ $user->id }}"
+                                                    data-username="{{ $user->username }}" data-email="{{ $user->email }}" data-designation="{{ $user->designation }}">Edit</button>
+                                            <button class="btn btn-raised btn-danger" data-id="{{ $user->id }}">Remove</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -72,7 +70,7 @@
                         <div class="form-group">
                             <label for="exampleSelect1" class="bmd-label-floating">Designation</label>
                             <select class="form-control" name="designation">
-                                <option value=""></option>
+                                <option value="">--Choose a Designation--</option>
                                 <option value="android-developer">Android Developer</option>
                                 <option value="ios-programmer">iOS Programmer</option>
                                 <option value="web-developer">Web Developer</option>
