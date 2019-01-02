@@ -15,11 +15,11 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="text-uppercase"><h>Id</h></th>
-                                    <th scope="col" class="text-uppercase"><h>Username</h></th>
-                                    <th scope="col" class="text-uppercase"><h>Email Address</h></th>
-                                    <th scope="col" class="text-uppercase"><h>Designation</h></th>
-                                    <th scope="col" class="text-uppercase"><h>Action</h></th>
+                                    <th scope="col" class="text-uppercase">Id</th>
+                                    <th scope="col" class="text-uppercase">Username</th>
+                                    <th scope="col" class="text-uppercase">Email Address</th>
+                                    <th scope="col" class="text-uppercase">Designation</th>
+                                    <th scope="col" class="text-uppercase">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,23 +61,23 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="bmd-label-floating">Username</label>
-                            <input type="text" class="form-control">
-                            <span class="text-danger">Username Error Message</span>
+                            <input type="text" class="form-control" name="username">
+                            <span class="text-danger usernameError"></span>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="bmd-label-floating">Email Address</label>
-                            <input type="email" class="form-control">
-                            <span class="text-danger">Email Address Error Message</span>
+                            <input type="email" class="form-control" name="email">
+                            <span class="text-danger emailError"></span>
                         </div>
                         <div class="form-group">
                             <label for="exampleSelect1" class="bmd-label-floating">Designation</label>
-                            <select class="form-control">
+                            <select class="form-control" name="designation">
                                 <option value=""></option>
                                 <option value="android-developer">Android Developer</option>
                                 <option value="ios-programmer">iOS Programmer</option>
                                 <option value="web-developer">Web Developer</option>
                             </select>
-                            <span class="text-danger">Designation Error Message</span>
+                            <span class="text-danger errorDesignation"></span>
                         </div>
                     </form>
                 </div>
