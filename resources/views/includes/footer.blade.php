@@ -11,6 +11,6 @@
             $('.table').DataTable();
         });
     </script>
-    <script src="crud.js"></script>
+    <script src="{{ asset('js/crud.js') }}"></script>
 </body>
 </html>
