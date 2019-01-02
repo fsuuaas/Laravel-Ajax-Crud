@@ -1,6 +1,7 @@
-// add new user
-
 $(document).ready(function(){
+
+    // add new user
+
     $(document).on('click','#create',function(){
         var username = $('input[name=username]').val();
         var email = $('input[name=email]').val();
@@ -55,4 +56,13 @@ $(document).ready(function(){
             }
         });
     });
+
+    // view user data
+    $(document).on('click', '#viewUserModal', function () {
+        $('input[name=view_username]').val($(this).data('username'));
+        $('input[name=view_email]').val($(this).data('email'));
+        $('select[name=view_designation]').val($(this).data('designation'));
+        $('#viewModal').modal('show');
+    });
 });
+
