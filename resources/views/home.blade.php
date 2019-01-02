@@ -31,8 +31,8 @@
                                         <td>{{ $user->designation }}</td>
                                         <td>
                                             <button type="button" class="btn btn-primary btn-raised" data-toggle="modal" id="viewUserModal" data-target="#viewModal" data-id="{{ $user->id }}"
-                                                    data-username="{{ $user->username }}" data-email="{{ $user->email }}" id="editUserModal" data-designation="{{ $user->designation }}">View</button>
-                                            <button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal" data-id="{{ $user->id }}"
+                                                    data-username="{{ $user->username }}" data-email="{{ $user->email }}" data-designation="{{ $user->designation }}">View</button>
+                                            <button class="btn btn-raised btn-info" data-toggle="modal" id="editUserModal" data-target="#editModal" data-id="{{ $user->id }}"
                                                     data-username="{{ $user->username }}" data-email="{{ $user->email }}" data-designation="{{ $user->designation }}">Edit</button>
                                             <button class="btn btn-raised btn-danger" id="deleteUserModal" data-id="{{ $user->id }}">Remove</button>
                                         </td>
@@ -98,31 +98,32 @@
                 </div>
                 <div class="modal-body">
                     <form>
+                       <input type="hidden" class="form-control" name="edit_id">
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="bmd-label-floating">Username</label>
-                            <input type="text" class="form-control">
-                            <span class="text-danger">Username Error Message</span>
+                            <input type="text" class="form-control" name="edit_username">
+                            <span class="text-danger errorUsername"></span>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="bmd-label-floating">Email Address</label>
-                            <input type="email" class="form-control">
-                            <span class="text-danger">Email Address Error Message</span>
+                            <input type="email" class="form-control" name="edit_email">
+                            <span class="text-danger errorEmail"></span>
                         </div>
                         <div class="form-group">
                             <label for="exampleSelect1" class="bmd-label-floating">Designation</label>
-                            <select class="form-control">
+                            <select class="form-control" name="edit_designation">
                                 <option value=""></option>
                                 <option value="android-developer">Android Developer</option>
                                 <option value="ios-programmer">iOS Programmer</option>
                                 <option value="web-developer">Web Developer</option>
                             </select>
-                            <span class="text-danger">Designation Error Message</span>
+                            <span class="text-danger errorDesignation"></span>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success btn-raised">Update</button>
+                    <button type="submit" class="btn btn-success btn-raised" id="update">Update</button>
                 </div>
             </div>
         </div>
