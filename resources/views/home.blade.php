@@ -30,11 +30,11 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->designation }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-primary btn-raised" data-toggle="modal" data-target="#viewModal" data-id="{{ $user->id }}"
-                                                    data-username="{{ $user->username }}" data-email="{{ $user->email }}" data-designation="{{ $user->designation }}">View</button>
+                                            <button type="button" class="btn btn-primary btn-raised" data-toggle="modal" id="viewUserModal" data-target="#viewModal" data-id="{{ $user->id }}"
+                                                    data-username="{{ $user->username }}" data-email="{{ $user->email }}" id="editUserModal" data-designation="{{ $user->designation }}">View</button>
                                             <button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal" data-id="{{ $user->id }}"
                                                     data-username="{{ $user->username }}" data-email="{{ $user->email }}" data-designation="{{ $user->designation }}">Edit</button>
-                                            <button class="btn btn-raised btn-danger" data-id="{{ $user->id }}">Remove</button>
+                                            <button class="btn btn-raised btn-danger" id="deleteUserModal" data-id="{{ $user->id }}">Remove</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -140,16 +140,13 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="bmd-label-floating">Username</label>
-                            <input type="text" class="form-control" disabled>
+                            <input type="text" class="form-control" name="view_username" disabled>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="bmd-label-floating">Email Address</label>
-                            <input type="email" class="form-control" disabled>
+                            <input type="email" class="form-control" name="view_email" disabled>
                         </div>
                         <div class="form-group">
-                            <label for="exampleSelect1" class="bmd-label-floating">Designation</label>
-                            <select class="form-control" disabled>
+                            <select class="form-control" name="view_designation" disabled>
                                 <option value=""></option>
                                 <option value="android-developer">Android Developer</option>
                                 <option value="ios-programmer">iOS Programmer</option>
