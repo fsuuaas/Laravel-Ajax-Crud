@@ -14,3 +14,4 @@
 Route::get('/', 'UsersController@index');
 Route::post('/','UsersController@store');
 Route::put('/','UsersController@update');
+Route::delete('/','UsersController@destroy');
