@@ -3,6 +3,7 @@ $(document).ready(function(){
     // add new user
 
     $(document).on('click','#create',function(){
+        event.preventDefault();
         var username = $('input[name=username]').val();
         var email = $('input[name=email]').val();
         var designation = $('select[name=designation]').val();
@@ -59,6 +60,7 @@ $(document).ready(function(){
 
     // view user data
     $(document).on('click', '#viewUserModal', function () {
+        event.preventDefault();
         $('input[name=view_username]').val($(this).data('username'));
         $('input[name=view_email]').val($(this).data('email'));
         $('select[name=view_designation]').val($(this).data('designation'));
@@ -67,6 +69,7 @@ $(document).ready(function(){
 
     // view user data for editting
     $(document).on('click', '#editUserModal', function () {
+        event.preventDefault();
         $('input[name=edit_username]').val($(this).data('username'));
         $('input[name=edit_email]').val($(this).data('email'));
         $('select[name=edit_designation]').val($(this).data('designation'));
@@ -76,6 +79,7 @@ $(document).ready(function(){
 
     // update user
     $('.modal-footer').on('click', '#update', function () {
+        event.preventDefault();
         var username = $('input[name=edit_username]').val();
         var email = $('input[name=edit_email]').val();
         var designation = $('select[name=edit_designation]').val();
@@ -92,20 +96,20 @@ $(document).ready(function(){
             },
             success: function (data) {
                 if ((data.errors)) {
-                    if (data.errors.edit_username) {
-                        $('.errorUsername').text(data.errors.edit_username);
+                    if (data.errors.username) {
+                        $('.errorUsername').text(data.errors.username);
                     } else {
                         $('.errorUsername').text('');
                     }
 
-                    if (data.errors.edit_email) {
-                        $('.errorEmail').text(data.errors.edit_email);
+                    if (data.errors.email) {
+                        $('.errorEmail').text(data.errors.email);
                     } else {
                         $('.errorEmail').text('');
                     }
 
-                    if (data.errors.edit_designation) {
-                        $('.errorDesignation').text(data.errors.edit_designation);
+                    if (data.errors.designation) {
+                        $('.errorDesignation').text(data.errors.designation);
                     } else {
                         $('.errorDesignation').text('');
                     }
@@ -131,12 +135,14 @@ $(document).ready(function(){
     
     // open delete user modal
     $(document).on('click', '#deleteUserModal', function () {
+        event.preventDefault();
         $('#deleteModal').modal('show');
         $('input[name=del_id]').val($(this).data('id'));
     });
 
     // delete user
     $('.modal-footer').on('click', '#delete', function () {
+        event.preventDefault();
         $.ajax({
             type: 'delete',
             url: '/',
