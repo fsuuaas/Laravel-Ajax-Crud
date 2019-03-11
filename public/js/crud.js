@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    var table=$('#userData').DataTable();
     // add new user
 
     $(document).on('click','#create',function(){
@@ -21,7 +21,7 @@ $(document).ready(function(){
                     if(data.errors.username){
                         $('.usernameError').text(data.errors.username);
                     }else{
-                        $('.usernameError').text(''); 
+                        $('.usernameError').text('');
                     }
 
                     if (data.errors.email) {
@@ -40,19 +40,19 @@ $(document).ready(function(){
                     $('input[name=username]').val('');
                     $('input[name=email]').val('');
                     $('select[name=designation]').val('');
-                    $('#userData').append(
+                    table.row.add($(
                         '<tr class="user-' + data.id + '">' +
                             '<td>'+ data.id +'</td>'+
                             '<td>' + data.username + '</td>' +
                             '<td>' + data.email + '</td>' +
                             '<td>' + data.designation + '</td>' +
                             '<td>' +
-                                '<button type="button" class="btn btn-primary btn-raised" data-toggle="modal" data-target="#viewModal" data-id="'+ data.id +'" data-username="'+ data.username +'" data-email="'+ data.email +'" data-designation="'+ data.designation +'">View</button>'+
-                                '<button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal" data-id="' + data.id + '" data-username="'+ data.username +'" data-email="'+ data.email +'" data-designation="'+ data.designation +'">Edit</button>'+
+                                '<button type="button" class="btn btn-primary btn-raised" data-toggle="modal" data-target="#viewModal" data-id="'+ data.id +'" data-username="'+ data.username +'" data-email="'+ data.email +'" data-designation="'+ data.designation +'">View</button> '+
+                                '<button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal" data-id="' + data.id + '" data-username="'+ data.username +'" data-email="'+ data.email +'" data-designation="'+ data.designation +'">Edit</button> '+
                                 '<button class="btn btn-raised btn-danger" data-id="'+ data.id +'">Remove</button>'+
                             '</td>' +
                         '</tr>'
-                    );
+                    )).draw();
                 }
             }
         });
@@ -122,8 +122,8 @@ $(document).ready(function(){
                             '<td>' + data.email + '</td>' +
                             '<td>' + data.designation + '</td>' +
                             '<td>' +
-                                '<button type="button" class="btn btn-primary btn-raised" data-toggle="modal" data-target="#viewModal" data-id="' + data.id + '" data-username="' + data.username + '" data-email="' + data.email + '" data-designation="' + data.designation + '">View</button>' +
-                                '<button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal" data-id="' + data.id + '" data-username="' + data.username + '" data-email="' + data.email + '" data-designation="' + data.designation + '">Edit</button>' +
+                                '<button type="button" class="btn btn-primary btn-raised" data-toggle="modal" data-target="#viewModal" data-id="' + data.id + '" data-username="' + data.username + '" data-email="' + data.email + '" data-designation="' + data.designation + '">View</button> ' +
+                                '<button class="btn btn-raised btn-info" data-toggle="modal" data-target="#editModal" data-id="' + data.id + '" data-username="' + data.username + '" data-email="' + data.email + '" data-designation="' + data.designation + '">Edit</button> ' +
                                 '<button class="btn btn-raised btn-danger" data-id="' + data.id + '">Remove</button>' +
                             '</td>' +
                         '</tr>'
@@ -132,7 +132,7 @@ $(document).ready(function(){
             }
         });
     });
-    
+
     // open delete user modal
     $(document).on('click', '#deleteUserModal', function () {
         event.preventDefault();
@@ -152,7 +152,7 @@ $(document).ready(function(){
             },
             success: function (data) {
                 $('#deleteModal').modal('hide');
-                $('.user-' + $('input[name=del_id]').val()).remove();
+                table.row($('.user-' + $('input[name=del_id]').val())).remove().draw(false);
             }
         });
     });
